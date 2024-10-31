@@ -8,29 +8,40 @@ class MobileAliveSignal:
         with open(config_path) as f:
             self.config = json.load(f)
         self.github = Github(self.config["github_token"])
-        self.repo = self.github.get_repo(self.config["repo_name"])
+        # 获取两个仓库
+        self.im_alive_repo = self.github.get_repo(self.config["repo_name"])
+        self.profile_repo = self.github.get_repo(f"{self.config['github_username']}/{self.config['github_username']}")
 
-    def update_readme(self):
+    def update_readmes(self):
         try:
-            contents = self.repo.get_contents("README.md")
-            current_content = contents.decoded_content.decode()
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            update_line = f"📱 Mobile Update: {timestamp} via SSH Auto Check"
 
-            new_content = self.update_content_section(
-                current_content,
-                f"📱 Mobile Update: {timestamp} via SSH Auto Check"
-            )
+            # 更新 im-alive 仓库
+            self.update_repo_readme(self.im_alive_repo, update_line)
 
-            self.repo.update_file(
+            # 更新个人资料仓库
+            self.update_repo_readme(self.profile_repo, update_line)
+
+            print(f"Successfully updated both repos at {timestamp}")
+
+        except Exception as e:
+            print(f"Error updating READMEs: {str(e)}")
+
+    def update_repo_readme(self, repo, update_line):
+        try:
+            contents = repo.get_contents("README.md")
+            current_content = contents.decoded_content.decode()
+            new_content = self.update_content_section(current_content, update_line)
+
+            repo.update_file(
                 "README.md",
                 f"Mobile Update {datetime.now().strftime('%Y-%m-%d')}",
                 new_content,
                 contents.sha
             )
-            print(f"Successfully updated from Mobile at {timestamp}")
-
         except Exception as e:
-            print(f"Error updating README: {str(e)}")
+            print(f"Error updating {repo.name}: {str(e)}")
 
     def update_content_section(self, content, update_line):
         """智能更新README内容，只保留最新的一条PC更新和一条Mobile更新"""
@@ -106,6 +117,6 @@ def should_update():
 if __name__ == "__main__":
     if should_update():
         signal = MobileAliveSignal()
-        signal.update_readme()
+        signal.update_readmes()
     else:
         print("Skipped: Last update was too recent")

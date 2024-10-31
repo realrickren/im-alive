@@ -15,11 +15,13 @@ On Github, we often see accounts that had daily contributions but suddenly stopp
 
 As developers, we are active on Github every day but might rarely contact family and friends.
 
-So I created this project to tell the world I'm still alive every day!
+So I created this project to automatically update README.md whenever my Mac boots up or connects to the internet, or when my iPhone charges, to tell the world I'm still alive!
 
 ## How It Works
 
 This project automatically updates README.md through:
+First, create two repositories on GitHub: one for this project, and another repository with the same name as your GitHub username (must be public) to display updates on your profile page.
+Then:
 - 🖥️ Mac Client: Automatically runs startup script when computer boots or connects to network
   1. Download pc-client.py and configure:
      ```bash
@@ -77,6 +79,8 @@ This project automatically updates README.md through:
   4. Add SSH command to run server script
   5. Enter server IP, username, password in SSH command
   6. Enter server script path, e.g.: /var/www/imalive/run.sh
+- Final effect
+![alt text](image.png)
 
 ## Recent Updates
 
