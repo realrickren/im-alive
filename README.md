@@ -1,6 +1,6 @@
 # I'm Alive 👋
 
-中文 | [English](README_EN.md)
+中文 | [English](./README_EN.md)
 
 **注意**: 本项目目前仅实现了 macOS 和 iPhone 的自动更新功能。Windows 和 Android 用户可以参考现有代码，根据各自平台的特性自行实现类似功能。欢迎提交 PR 来支持更多平台！
 
