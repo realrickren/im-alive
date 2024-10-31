@@ -9,7 +9,9 @@
 - 📱 iphone手机：通过快捷指令->自动化->手机充电时触发 通过ssh运行服务器脚本
 
 ## 最近更新
-📱 Mobile Update: 2024-10-31 06:14:12 via SSH Auto Check
+
+📱 Mobile Update: 2024-10-31 06:19:46 via SSH Auto Check
+
 🖥️ PC Update: 2024-10-31 14:08:37 from RickRen.local (Darwin)
 ## 关于
 
@@ -23,5 +25,7 @@
 
 
 ## 最近更新
-📱 Mobile Update: 2024-10-31 06:14:12 via SSH Auto Check
+
+📱 Mobile Update: 2024-10-31 06:19:46 via SSH Auto Check
+
 🖥️ PC Update: 2024-10-31 14:08:37 from RickRen.local (Darwin)
