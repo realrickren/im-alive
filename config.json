@@ -1,6 +1,6 @@
 {
-  "github_token": "your_github_token",
-  "repo_name": "your_github_username/your_repo_name",
-  "telegram_bot_token": "your_telegram_bot_token(not necessary if you don't want to use telegram)",
-  "chat_id": "your_telegram_chat_id(not necessary if you don't want to use telegram)"
+  "github_token": "your github token",
+  "repo_name": "your github username/your repo name",
+  "telegram_bot_token": "your telegram bot token, not necessary if you don't want to send message to telegram",
+  "chat_id": "your telegram chat id, not necessary if you don't want to send message to telegram"
 }
