@@ -9,9 +9,7 @@
 - 📱 移动端：通过Telegram机器人活动触发更新
 
 ## 最近更新
-
-[最新更新将会自动添加在这里]
-
+🖥️ PC Update: 2024-10-31 10:33:29 from RickRen.local (Darwin)
 ## 关于
 
 这个项目的目的是让我的朋友们知道我一切安好。如果你看到这个仓库超过一周没有更新，可以通过其他方式联系我哦！
@@ -21,3 +19,7 @@
 - Telegram: @your_telegram_username
 - Email: your.email@example.com
 - [其他联系方式]
+
+
+## 最近更新
+🖥️ PC Update: 2024-10-31 10:33:29 from RickRen.local (Darwin)
