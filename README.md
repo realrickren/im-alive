@@ -77,7 +77,7 @@
   6. 在ssh运行服务器脚本中输入服务器上run.sh的路径，例如：/var/www/imalive/run.sh
 ## 最近更新
 
-🖥️ PC Update: 2024-10-31 14:23:42 from RickRen.local (Darwin)
+🖥️ PC Update: 2024-10-31 15:55:34 from RickRen.local (Darwin)
 
 📱 Mobile Update: 2024-10-31 06:19:46 via SSH Auto Check
 ## 关于
@@ -93,6 +93,6 @@
 
 ## 最近更新
 
-🖥️ PC Update: 2024-10-31 14:23:42 from RickRen.local (Darwin)
+🖥️ PC Update: 2024-10-31 15:55:34 from RickRen.local (Darwin)
 
 📱 Mobile Update: 2024-10-31 06:19:46 via SSH Auto Check
