@@ -1,20 +1,34 @@
 # pc_client.py
 
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 import requests
 from github import Github
 import platform
 import socket
+import logging
+
+# 设置日志
+logging.basicConfig(
+    filename='/tmp/imalive.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 class PCAliveSignal:
     def __init__(self, config_path="config.json"):
-        self.load_config(config_path)
-        self.github = Github(self.config["github_token"])
-        # 获取两个仓库
-        self.im_alive_repo = self.github.get_repo(self.config["repo_name"])
-        self.profile_repo = self.github.get_repo(f"{self.config['github_username']}/{self.config['github_username']}")
+        try:
+            logging.info("Initializing PCAliveSignal")
+            self.load_config(config_path)
+            self.github = Github(self.config["github_token"])
+            # 获取两个仓库
+            self.im_alive_repo = self.github.get_repo(self.config["repo_name"])
+            self.profile_repo = self.github.get_repo(f"{self.config['github_username']}/{self.config['github_username']}")
+            logging.info("Initialization successful")
+        except Exception as e:
+            logging.error(f"Initialization error: {str(e)}")
+            raise
 
     def load_config(self, config_path):
         if not os.path.exists(config_path):
@@ -40,22 +54,53 @@ class PCAliveSignal:
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
 
+    def should_update(self):
+        """检查是否需要更新（防止频繁更新）"""
+        last_update_file = "/tmp/last_pc_update.txt"
+        now = datetime.now()
+
+        try:
+            if os.path.exists(last_update_file):
+                with open(last_update_file, 'r') as f:
+                    last_update = datetime.fromisoformat(f.read().strip())
+                    # 如果距离上次更新不足5分钟，跳过
+                    if now - last_update < timedelta(minutes=5):
+                        logging.info("Skipping update: too soon since last update")
+                        return False
+        except Exception as e:
+            logging.warning(f"Error checking last update time: {str(e)}")
+
+        # 记录本次更新时间
+        with open(last_update_file, 'w') as f:
+            f.write(now.isoformat())
+        return True
+
     def update_readmes(self):
         try:
+            if not self.should_update():
+                return
+
+            logging.info("Starting update process")
             system_info = self.get_system_info()
             update_line = f"🖥️ PC Update: {system_info['timestamp']} from {system_info['hostname']} ({system_info['platform']})"
 
             # 更新 im-alive 仓库
             self.update_repo_readme(self.im_alive_repo, update_line)
+            logging.info("Updated im-alive repo")
 
             # 更新个人资料仓库
             self.update_repo_readme(self.profile_repo, update_line)
+            logging.info("Updated profile repo")
 
             print(f"Successfully updated both repos at {datetime.now()}")
             self.send_telegram_notification("PC更新成功！")
+            logging.info("Update process completed successfully")
 
         except Exception as e:
-            print(f"Error updating READMEs: {str(e)}")
+            error_msg = f"Error updating READMEs: {str(e)}"
+            logging.error(error_msg)
+            print(error_msg)
+            self.send_telegram_notification(f"更新失败: {str(e)}")
 
     def update_repo_readme(self, repo, update_line):
         try:
@@ -139,5 +184,10 @@ class PCAliveSignal:
             print(f"Error sending Telegram notification: {str(e)}")
 
 if __name__ == "__main__":
-    signal = PCAliveSignal()
-    signal.update_readmes()
+    try:
+        logging.info("Script started")
+        signal = PCAliveSignal()
+        signal.update_readmes()
+        logging.info("Script completed successfully")
+    except Exception as e:
+        logging.error(f"Script failed: {str(e)}")
