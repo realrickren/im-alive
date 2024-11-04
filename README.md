@@ -82,9 +82,9 @@
 ![alt text](image.png)
 ## 最近更新
 
-📱 Mobile Update: 2024-11-04 20:47:50 via SSH Auto Check
+🖥️ PC Update: 2024-11-05 05:44:15 from RickRen.local (Darwin)
 
-🖥️ PC Update: 2024-11-04 21:36:34 from RickRen.local (Darwin)
+📱 Mobile Update: 2024-11-04 20:47:50 via SSH Auto Check
 ## 关于
 
 这个项目的目的是让我的朋友们知道我一切安好。如果你看到这个仓库超过一周没有更新，可以通过其他方式联系我哦！
@@ -98,6 +98,6 @@
 
 ## 最近更新
 
-📱 Mobile Update: 2024-11-04 20:47:50 via SSH Auto Check
+🖥️ PC Update: 2024-11-05 05:44:15 from RickRen.local (Darwin)
 
-🖥️ PC Update: 2024-11-04 21:36:34 from RickRen.local (Darwin)
+📱 Mobile Update: 2024-11-04 20:47:50 via SSH Auto Check
