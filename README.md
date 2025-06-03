@@ -82,7 +82,7 @@
 ![alt text](image.png)
 ## 最近更新
 
-📱 Mobile Update: 2025-06-02 06:42:08 via SSH Auto Check
+📱 Mobile Update: 2025-06-03 00:12:42 via SSH Auto Check
 
 🖥️ PC Update: 2024-12-04 05:41:25 from RickRen.local (Darwin)
 ## 关于
@@ -98,6 +98,6 @@
 
 ## 最近更新
 
-📱 Mobile Update: 2025-06-02 06:42:08 via SSH Auto Check
+📱 Mobile Update: 2025-06-03 00:12:42 via SSH Auto Check
 
 🖥️ PC Update: 2024-12-04 05:41:25 from RickRen.local (Darwin)
